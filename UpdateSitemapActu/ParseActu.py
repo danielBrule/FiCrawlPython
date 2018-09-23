@@ -128,6 +128,7 @@ class SitemapActu:
                                  axis=1)
         db_execute_insert_update_queries(password=self._password, queries=queries)
 
+        print("Insert ArticleKeywords")
         queries = []
         query_article_keywords_table = "insert into FiCrawl.ArticleKeywords(ArticleID, keywordid)  values('{}','{}')"
         for idx, row in articles.iterrows():
@@ -154,7 +155,7 @@ class SitemapActu:
             self._db_insert_new_articles(articles=self._df)
 
 
-parser = SitemapActu(newspaper=Newspaper.Lefigaro, password="")
+parser = SitemapActu(newspaper=Newspaper.Lefigaro, password="Dani1234")
 
 parser.download_sitemapactu()
 parser.update_db()
