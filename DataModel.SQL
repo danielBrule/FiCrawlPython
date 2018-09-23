@@ -51,3 +51,12 @@ CREATE TABLE FiCrawl.Comments (
   ArticleID varchar(19) NOT NULL FOREIGN KEY REFERENCES FiCrawl.articles(Articleid),
   ParentCommentId int DEFAULT NULL FOREIGN KEY REFERENCES FiCrawl.comments(Commentid)
 );
+
+
+CREATE LOGIN dbrule WITH PASSWORD = 'BenWantLove12'
+
+CREATE USER [dbrule] FOR LOGIN [dbrule] WITH DEFAULT_SCHEMA = FiCrawl;
+
+USE FiCrawl
+ALTER ROLE db_datareader ADD MEMBER [dbrule];
+ALTER ROLE db_datawriter ADD MEMBER [dbrule];
